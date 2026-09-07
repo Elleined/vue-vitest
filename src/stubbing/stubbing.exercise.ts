@@ -16,12 +16,9 @@ export const authenticationService: AuthenticationService = {
  * 4. Add method assertions on `authenticationService.isPasswordMatch` to verify that it was called with the correct parameters and properly executed as a mock.
  */
 export const authenticationController = {
-    verify(hashPassword: string, rawPassword: string): void {
+    verify(hashPassword: string, rawPassword: string): string {
         const isPasswordMatched: boolean = authenticationService.isPasswordMatch(hashPassword, rawPassword)
-        if (isPasswordMatched) {
-            console.log('Login success')
-            return
-        }
-        console.log('Invalid credentials')
+        if (isPasswordMatched) return 'Login success'
+        return 'Invalid credentials'
     }
 }

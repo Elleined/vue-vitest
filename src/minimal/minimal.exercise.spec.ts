@@ -3,7 +3,7 @@ import {getGrade, type Grade} from "@/minimal/minimal.exercise.ts";
 
 // Try to use describe and test here to group the unit test cases
 
-describe('minimal.exercise.ts unit test', () => {
+describe.concurrent('minimal.exercise.ts unit test', () => {
     describe('Happy paths', () => {
         test('90+ should return A', () => {
             const grade: Grade = getGrade(90)
@@ -31,7 +31,34 @@ describe('minimal.exercise.ts unit test', () => {
         })
     })
 
-    describe('Parameterized test and Error path testing', () => {
+    describe('Parameterized tests', () => {
+        test.each([90, 91, 92, 93, 94, 95, 96, 97, 98, 99])('%d should return A', (num: number) => {
+            const grade: Grade = getGrade(num)
+            expect(grade).toBe('A')
+        })
+
+        test.each([80, 81, 82, 83, 84, 85, 86, 87, 88, 89])('%d should return B', (num: number) => {
+            const grade: Grade = getGrade(num)
+            expect(grade).toBe('B')
+        })
+
+        test.each([70, 71, 72, 73, 74, 75, 76, 77, 78, 79])('%d should return C', (num: number) => {
+            const grade: Grade = getGrade(num)
+            expect(grade).toBe('C')
+        })
+
+        test.each([60, 61, 62, 63, 64, 65, 66, 67, 68, 69])('%d should return D', (num: number) => {
+            const grade: Grade = getGrade(num)
+            expect(grade).toBe('D')
+        })
+
+        test.each([50, 51, 52, 53, 54, 55, 56, 57, 58, 59])('%d should return F', (num: number) => {
+            const grade: Grade = getGrade(num)
+            expect(grade).toBe('F')
+        })
+    })
+
+    describe('Error path testing', () => {
         test.each([-1, 101])('Should throw an error if score: %d', (score: number) => {
             expect(() => getGrade(score)).toThrow('Score must be between 0 and 100')
         })

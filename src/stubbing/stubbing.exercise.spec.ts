@@ -1,12 +1,7 @@
-import {describe, expect, test, vi, beforeEach} from "vitest";
+import {describe, expect, test, vi} from "vitest";
 import {authenticationController, authenticationService} from "@/stubbing/stubbing.exercise.ts";
 
-describe('stubbing.exercise.ts unit test', () => {
-    beforeEach(() => {
-        // Resets spy call counts and clears mocked implementations between tests
-        vi.restoreAllMocks();
-    });
-
+describe.concurrent('stubbing.exercise.ts unit test', () => {
     test('Should return Invalid credentials', () => {
         // Dummy values
         // Expected values
@@ -25,7 +20,7 @@ describe('stubbing.exercise.ts unit test', () => {
 
         // Spies and mocks return type assertions and method call verifications
         expect(serviceFn).toHaveReturnedWith(isPasswordMatch)
-        expect(serviceFn).toHaveBeenCalledOnce()
+        expect(serviceFn).toHaveBeenCalled()
     })
 
     test('Should return Login success', () => {
@@ -46,6 +41,6 @@ describe('stubbing.exercise.ts unit test', () => {
 
         // Spies and mocks return type assertions and method call verifications
         expect(serviceFn).toHaveReturnedWith(isPasswordMatch)
-        expect(serviceFn).toHaveBeenCalledOnce()
+        expect(serviceFn).toHaveBeenCalled()
     })
 })

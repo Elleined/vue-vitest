@@ -10,11 +10,6 @@ export type Grade = 'A' | 'B' | 'C' | 'D' | 'F';
  * - `60 - 69`: 'D'
  * - `0 - 59`: 'F'
  * * @throws {Error} If the provided score is less than 0 or greater than 100.
- * * @example
- * ```typescript
- * const standardGrade = getGrade(85); // Returns 'B'
- * const boundaryGrade = getGrade(90); // Returns 'A'
- * ```
  */
 export const getGrade = (score: number): Grade => {
     if (score < 0 || score > 100) throw new Error('Score must be between 0 and 100')

@@ -1,5 +1,5 @@
-import {describe} from "vitest";
+import { describe } from "vitest";
 
-describe('stubbing.exercise.ts unit test', () => {
+describe.concurrent('stubbing.exercise.ts unit test', () => {
 
 })

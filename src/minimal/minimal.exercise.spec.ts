@@ -1,8 +1,7 @@
-import {describe, expect, test} from "vitest";
-import {getGrade, type Grade} from "@/minimal/minimal.exercise.ts";
+import { describe, expect, test } from "vitest";
+import { getGrade, type Grade } from "@/minimal/minimal.exercise.ts";
 
 // Try to use describe and test here to group the unit test cases
-
 describe.concurrent('minimal.exercise.ts unit test', () => {
     describe('Happy paths', () => {
         test('90+ should return A', () => {

@@ -9,12 +9,9 @@ export const authenticationService: AuthenticationService = {
 }
 
 export const authenticationController = {
-    login(hashPassword: string, rawPassword: string): void {
+    login(hashPassword: string, rawPassword: string): string {
         const isPasswordMatched: boolean = authenticationService.isPasswordMatch(hashPassword, rawPassword)
-        if (isPasswordMatched) {
-            console.log('Login success')
-            return
-        }
-        console.log('Invalid credentials')
+        if (isPasswordMatched) return 'Login success'
+        return 'Invalid credentials'
     }
 }
